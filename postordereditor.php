@@ -80,7 +80,7 @@ class PageOrderEditor { // Core class
 				'posts_per_page' => 150,//get_option('posts_per_page'),
 				'post_status' => 'publish',
 				'cat' => $cat_id,
-				'post_type' => array('post', 'bildeannonser'),
+				'post_type' => array('post'),
 				'orderby' => 'date',
 				'order' => 'DESC'
 				);
@@ -95,7 +95,7 @@ class PageOrderEditor { // Core class
 		$args = array(
 				'posts_per_page' => 150,//get_option('posts_per_page'),
 				'post_status' => 'publish',
-				'post_type' => array('post', 'bildeannonser'),
+				'post_type' => array('post'),
 				'orderby' => 'date',
 				'order' => 'DESC'
 				);
@@ -144,7 +144,7 @@ class PageOrderEditor { // Core class
 			$meta_name = "_PageOrder" . $cat_id;
 			$args = array(
 				'meta_key' => $meta_name,
-				'post_type' => array('post', 'bildeannonser')
+				'post_type' => array('post')
 				);
 			$deactivate_plugginn = new WP_Query($args);
 			while ($deactivate_plugginn->have_posts()) : $deactivate_plugginn->the_post();
@@ -153,7 +153,7 @@ class PageOrderEditor { // Core class
 		}
 		$args = array(
 				'meta_key' => '_PageOrder0',
-				'post_type' => array('post', 'bildeannonser')
+				'post_type' => array('post')
 				);
 		$deactivate_plugginn = new WP_Query($args);
 		while ($deactivate_plugginn->have_posts()) : $deactivate_plugginn->the_post();
@@ -194,7 +194,7 @@ class PageOrderEditor { // Core class
 				'posts_per_page' => get_option('posts_per_page '),
 				'post_status' => 'publish',
 				'meta_key' => $meta_name,
-				'post_type' => array('post', 'bildeannonser')
+				'post_type' => array('post')
 				);
 			$add_new_category_meta = new WP_Query($args);
 			while ($add_new_category_meta->have_posts()) : $add_new_category_meta->the_post();
@@ -212,7 +212,7 @@ class PageOrderEditor { // Core class
 			$args = array(
 				'posts_per_page' => 30,
 				'meta_key' => $meta_name,
-				'post_type' => array('post', 'bildeannonser')
+				'post_type' => array('post')
 				);
 			$add_new_category_meta = new WP_Query($args);
 			while ($add_new_category_meta->have_posts()) : $add_new_category_meta->the_post();
@@ -242,7 +242,7 @@ class PageOrderEditor { // Core class
 							'posts_per_page' => -1,
 							'post_status' => 'publish',
 							'meta_key' => $meta_name,
-							'post_type' => array('post', 'bildeannonser')
+							'post_type' => array('post')
 						);
 						$activate_plugginn = new WP_Query($args);
 						while ($activate_plugginn->have_posts()) : $activate_plugginn->the_post();
@@ -321,7 +321,7 @@ class PageOrderEditor { // Core class
 				'order' => 'ASC',
 				'post_status' => 'publish',
 				'meta_key' => $meta_name,
-				'post_type' => array('post', 'bildeannonser')
+				'post_type' => array('post')
 				);
 			$old_post = new WP_Query($args);
 			$oldnum = $old_post->post_count;
@@ -340,7 +340,7 @@ class PageOrderEditor { // Core class
 						'cat' => $catid,
 						'posts_per_page' => $diff,
 						'post__not_in' => $old_posts_id,
-						'post_type' => array('post', 'bildeannonser')
+						'post_type' => array('post')
 					);
 					$i = $oldnum + 1;
 					
@@ -360,7 +360,7 @@ class PageOrderEditor { // Core class
 				'offset' => $newnum,
 				'post_status' => 'publish',
 				'meta_key' => $meta_name,
-				'post_type' => array('post', 'bildeannonser')
+				'post_type' => array('post')
 				);
 					$delete_post = new WP_Query($args);
 					while ($delete_post->have_posts()) : $delete_post->the_post();
@@ -428,7 +428,7 @@ class PageOrderEditor { // Core class
 				'order' => 'ASC',
 				'post_status' => 'publish',
 				'meta_key' => $meta,
-				'post_type' => array('post', 'bildeannonser')
+				'post_type' => array('post')
 				);
 		$fremside = new WP_Query($args);
 		global $post;
@@ -466,7 +466,7 @@ class PageOrderEditor { // Core class
 		$meta_name = "_PageOrder" . $catid;
 		$args = array(
 				'meta_key' => $meta_name,
-				'post_type' => array('post', 'bildeannonser')
+				'post_type' => array('post')
 				);
 		$remove_meta = new WP_Query($args);
 		while ($remove_meta->have_posts()) : $remove_meta->the_post();
@@ -493,7 +493,7 @@ class PageOrderEditor { // Core class
 				'posts_per_page' => -1,
 				'post_status' => 'publish',
 				'meta_key' => $meta_name,
-				'post_type' => array('post', 'bildeannonser')
+				'post_type' => array('post')
 				);
 			$activate_plugginn = new WP_Query($args);
 			while ($activate_plugginn->have_posts()) : $activate_plugginn->the_post();
@@ -574,7 +574,7 @@ function pageorder_query_posts($numbpost = NULL) {
 			if(is_category($cat->catid) && $cat->catid) {
 				$query .= "&meta_key=_PageOrder" . $cat->catid;
 				parse_str($query, $args);
-				$args['post_type'] = array('post', 'bildeannonser');
+				$args['post_type'] = array('post');
 				query_posts($args);
 			}
 		}
